@@ -1,0 +1,101 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\begin{document}
+67. Show that for positive integers $m$ and $n$, $\displaystyle \int_{-\pi}^{\pi} \sin{mx} \sin{nx} \, \mathrm{d}x =
+\begin{cases}
+
+0, \,\, m \neq n \\
+\pi, \,\, m = n
+\end{cases}$
+
+\emph{Proof.} First start with the case $m = n$. Note that using the trigonometric identity $$\sin{A}\sin{B} = \frac{1}{2}(\cos{(A-B)} - \cos{(A+B)})$$
+
+Then 
+\[
+\displaystyle \int_{-\pi}^{\pi} \sin{mx} \sin{nx} \, \mathrm{d}x = \frac{1}{2}\displaystyle \int_{-\pi}^{\pi} \cos{((m-n)x)} - \cos{((m+n)x)} \,\, \mathrm{d}x
+\]
+
+Since $m = n$, then the integral becomes
+\[
+\frac{1}{2}\displaystyle \int_{-\pi}^{\pi} \cos{0} - \cos{((2m)x)} \,\, \mathrm{d}x = \frac{1}{2}\displaystyle \int_{-\pi}^{\pi} 1 - \cos{(2mx)} \,\, \mathrm{d}x
+\]
+
+\[
+\frac{1}{2} \left(x - \frac{\sin{(2mx)}}{2m}\right) \bigg\rvert_{-\pi}^{\pi} = \frac{1}{2} \left(\pi - \frac{\sin(2m\pi)}{2m} \right) - \left(-\pi - \frac{\sin(-2m\pi)}{2m} \right) = \frac{1}{2} (2\pi) = \pi
+\]
+\\
+For the next case, if $m \neq n$, then
+\[
+\frac{1}{2}\displaystyle \int_{-\pi}^{\pi} \cos{((m-n)x)} - \cos{((m+n)x)} \,\, \mathrm{d}x = \frac{1}{2}\left(\frac{\sin{((m-n)x)}}{m-n} - \frac{\sin{((m+n)x)}}{m+n}\right) \bigg\rvert_{-\pi}^{\pi}
+\]
+
+\[
+\frac{1}{2}\left[\left(\frac{\sin{((m-n)\pi)}}{m-n} - \frac{\sin{((m+n)\pi)}}{m+n}\right) - \left(\frac{\sin{(-(m-n)\pi)}}{m-n} - \frac{\sin{(-(m+n)\pi)}}{m+n}\right)\right] = 0
+\]
+
+Also, since $m - n$ and $m + n$ are integers, then 
+
+\[
+ \frac{1}{2}\left(\frac{\sin{((m-n)x)}}{m-n} - \frac{\sin{((m+n)x)}}{m+n}\right) \bigg\rvert_{-\pi}^{\pi} = 0
+\]
+
+as required.
+\\
+
+70. A \emph{finite Fourier series} is given by the sum
+\[
+\displaystyle  \sum_{n = 1}^{N} a_{n} \sin{nx} = a_1 \sin{x} + a_2 \sin{2x} + a_3 \sin{3x} + \ldots + a_N \sin{Nx}
+\]
+
+Show that the $m$th coefficient $a_m$ is given by the formula
+$$ a_m = \frac{1}{\pi}\displaystyle \int_{-\pi}^{\pi} f(x)\sin{mx} \,\mathrm{d}x$$
+
+where $f$ is a finite Fourier series of $N$ elements.\\
+
+\emph{Proof.} Let $m$ be an integer where $1 \leq m \leq N$. Let
+\[
+f(x) =  \sum_{n = 1}^{N} a_{n} \sin{nx}
+\]
+
+Then define
+
+\[
+f(x)\sin{mx} = \sin{mx} \sum_{n = 1}^{N} a_{n} \sin{nx}
+\]
+
+\[
+f(x)\sin{mx} = \sum_{n = 1}^{N} a_{n} \sin{mx} \sin{nx}
+\]
+
+Integrating both sides from $-\pi$ to $\pi$ yields
+
+\[
+\displaystyle \int_{-\pi}^{\pi} f(x)\sin{mx} = \displaystyle \int_{-\pi}^{\pi} \sum_{n = 1}^{N} a_{n} \sin{mx} \sin{nx} 
+\]
+
+
+Since $m$ and $n$ are integers, then $\sin{mx}\sin{nx}$ is continuous over the range [$-\pi,\pi$]. Thus,
+
+\[
+\displaystyle \int_{-\pi}^{\pi} f(x)\sin{mx} = \sum_{n = 1}^{N} a_{n}  \displaystyle \int_{-\pi}^{\pi}  \sin{mx} \sin{nx} 
+\]
+
+Now, from the previous result, one can note that at everywhere but $n = m$, the integral evalutes to $0$. It suffices to say that the only term left would be the $m$th term. The right hand side yields
+
+\[
+\displaystyle \int_{-\pi}^{\pi} f(x)\sin{mx} = a_m \pi
+\]
+
+Or rearranging,
+\[
+\frac{1}{\pi} \displaystyle \int_{-\pi}^{\pi} f(x)\sin{mx} = a_m
+\]
+
+as required.
+\end{document}
